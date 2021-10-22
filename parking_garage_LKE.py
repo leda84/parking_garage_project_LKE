@@ -19,38 +19,70 @@
 #- parkingSpaces -> list
 #- currentTicket (is ticket paid?) -> dictionary
 
-dict = 
+class ParkingLot():
+
+    def __init__(self):
+        self.spaces = [1, 2, 3, 4, 5, 6]
+        self.tickets = 0
+        self.currentTicket = {}
 
 
+    def takeTicket(self):
+# This method will pop from spaces add to current ticket and print ticket number
+        if self.tickets >= 6:
+            print("There's no tickets available")
+        else:
+            print(f"Your ticket is {self.spaces[0]}")
+            self.currentTicket[self.spaces[0]] = True
+            self.spaces.pop(0)
+            self.tickets += 1
+            
+garage = ParkingLot()
+print(garage.spaces)
+print(garage.tickets)
+print(garage.currentTicket)
+garage.takeTicket()
+print(garage.spaces)
+print(garage.tickets)
+print(garage.currentTicket)
+garage.takeTicket()
+garage.takeTicket()
+garage.takeTicket()
+garage.takeTicket()
+garage.takeTicket()
+garage.takeTicket()
+    # def payTicket(self):
+# This method is going to check if there's a valid ticket number and also 
 
-# class Lke_parking():
-
-    def __init__(self, capacity, spaces, ):
-        self.capacity = capacity
-        self.spaces = spaces
-
-
-a
-    def takeTicket(self, capacity):
-         print("Your ticket is..")
-
-    def payForParking(self, tik_num):
-        self.tik_num = tik_num
-
-
+    # def leaveGarage(self):
+        
 
 # spaces = []
 # if spaces < 6:
 #     print("your ticket number is ")
 
 
+# lke_parking =
 
-
-
-
+# garage = ParkingLot([1,2,3,4,5,6,7,8,9,10])
 # create a function to run the garage
-def showOptions():
-        action = input("What would you like to do? " "\n \t 1.Take Ticket" "\n \t 2.Pay Ticket" "\n \t 3.Leave Garage" "\n \t 4.Quit" "\n")
-        return action
 
-showOptions()
+# def showOptions():
+    # while True:
+    #    action = input("What would you like to do? " "\n \t Take Ticket" "\n \t Pay Ticket" "\n \t Leave Garage" "\n \t Quit" "\n")
+        
+        # if action.lower() == 'quit':
+            # print("Thank you for visitng ")
+            # break
+        # elif action.lower() == 'take ticket':
+
+        #     lke_parking.takeTicket()
+
+        # elif lke_parking.lower() == 'pay ticket':
+        #     lke_parking.payTicket()
+
+
+
+
+
+
