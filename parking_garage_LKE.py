@@ -19,25 +19,38 @@
 #- parkingSpaces -> list
 #- currentTicket (is ticket paid?) -> dictionary
 
+dict = 
 
 
-class Lke_parking():
 
-    def __init__(self):
+# class Lke_parking():
 
-        def takeTicket(self, capacity):
+    def __init__(self, capacity, spaces, ):
         self.capacity = capacity
-        tik_num = input("")
+        self.spaces = spaces
+
+
+a
+    def takeTicket(self, capacity):
+         print("Your ticket is..")
 
     def payForParking(self, tik_num):
         self.tik_num = tik_num
 
 
 
+# spaces = []
+# if spaces < 6:
+#     print("your ticket number is ")
+
+
+
+
+
 
 # create a function to run the garage
 def showOptions():
-        action = input("What would you like to do? " "\n \t 1.Take Ticket" "\n \t 2.Pay Ticket" "\n \t 3.Leave Garage" "\n \t 4.Quit")
+        action = input("What would you like to do? " "\n \t 1.Take Ticket" "\n \t 2.Pay Ticket" "\n \t 3.Leave Garage" "\n \t 4.Quit" "\n")
         return action
 
 showOptions()
