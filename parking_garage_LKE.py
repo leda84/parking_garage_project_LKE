@@ -51,6 +51,15 @@ class ParkingLot():
             self.currentTicket.pop(int(answer))
             #popped thing = False
             self.spaces.append(0)
+            self.tickets -= 1
+            
+    def exitGarage(self):
+        response = input("What is your ticket number?")
+        if int(response) not in self.currentTicket.keys():
+        # if self.currentTicket. not in
+            print("Have a good day!")
+        elif self.currentTicket is True:
+            self.payTicket
         
 # add a way to append to spaces to show another space is available after paying
 
