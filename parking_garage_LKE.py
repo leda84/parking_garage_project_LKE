@@ -1,3 +1,4 @@
+
 #Your parking gargage class should have the following methods:
 # takeTicket
 #- This should increase the number of tickets sold by 1
@@ -37,6 +38,41 @@ class ParkingLot():
             self.spaces.pop(0)
             self.tickets += 1
             
+
+    def payTicket(self):
+#This method is going to check if there's a valid ticket number and also 
+        answer = input("What is your ticket number? ")
+        if int(answer) not in self.currentTicket.keys():
+            print("Please enter a valid ticket number")
+        #if answer in self.currentTicket and False:
+            #print("This ticket has already been paid.")
+        else:
+            print(f"Your ticket is paid")
+            self.currentTicket.pop(int(answer))
+            #popped thing = False
+            self.spaces.append(0)
+        
+# add a way to append to spaces to show another space is available after paying
+
+
+
+
+
+
+
+
+
+
+    # def leaveGarage(self):
+    #it will have to compare the ticket to see if it's paid(False)
+        
+
+# spaces = []
+# if spaces < 6:
+#     print("your ticket number is ")
+
+
+#test runs:
 garage = ParkingLot()
 print(garage.spaces)
 print(garage.tickets)
@@ -51,38 +87,26 @@ garage.takeTicket()
 garage.takeTicket()
 garage.takeTicket()
 garage.takeTicket()
-    # def payTicket(self):
-# This method is going to check if there's a valid ticket number and also 
-
-    # def leaveGarage(self):
-        
-
-# spaces = []
-# if spaces < 6:
-#     print("your ticket number is ")
+print(garage.currentTicket)
+garage.payTicket()
 
 
-# lke_parking =
+
+# lke_parking = ParkingLot() 
 
 # garage = ParkingLot([1,2,3,4,5,6,7,8,9,10])
 # create a function to run the garage
 
 # def showOptions():
-    # while True:
-    #    action = input("What would you like to do? " "\n \t Take Ticket" "\n \t Pay Ticket" "\n \t Leave Garage" "\n \t Quit" "\n")
+#     while True:
+#        action = input("What would you like to do? " "\n \t Take Ticket" "\n \t Pay Ticket" "\n \t Leave Garage" "\n \t Quit" "\n")
         
-        # if action.lower() == 'quit':
-            # print("Thank you for visitng ")
-            # break
-        # elif action.lower() == 'take ticket':
+#         if action.lower() == 'quit':
+#             print("Thank you for visitng ")
+#             break
+#         elif action.lower() == 'take ticket':
 
-        #     lke_parking.takeTicket()
+#             lke_parking.takeTicket()
 
-        # elif lke_parking.lower() == 'pay ticket':
-        #     lke_parking.payTicket()
-
-
-
-
-
-
+#         elif lke_parking.lower() == 'pay ticket':
+#             lke_parking.payTicket()
