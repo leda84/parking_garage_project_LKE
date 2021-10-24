@@ -1,4 +1,3 @@
-
 #Your parking gargage class should have the following methods:
 # takeTicket
 #- This should increase the number of tickets sold by 1
@@ -31,91 +30,88 @@ class ParkingLot():
     def takeTicket(self):
 # This method will pop from spaces add to current ticket and print ticket number
         if self.tickets >= 6:
-            print("There's no tickets available")
+            print("Garage is full")
         else:
-            print(f"Your ticket is {self.spaces[0]}")
-            self.currentTicket[self.spaces[0]] = True
+            print(f"Your ticket number is {self.spaces[0]}")
+            self.currentTicket[self.spaces[0]] = False #starts at False becasue it's unpaid
             self.spaces.pop(0)
             self.tickets += 1
             
 
     def payTicket(self):
 #This method is going to check if there's a valid ticket number and also 
-        answer = input("What is your ticket number? ")
+        answer = input("Enter ticket number you would like to pay: ")
         if int(answer) not in self.currentTicket.keys():
             print("Please enter a valid ticket number")
-        #if answer in self.currentTicket and False:
-            #print("This ticket has already been paid.")
+            self.payTicket()
+        # this is going to be to check if the ticket is already paid, so that payment is not needed
+        #if int(answer) in self.currentTicket and True:
+            #print("This ticket has been paid. You can exit now.")
+        elif self.currentTicket[int(answer)] == True:
+            print("This ticket has already been paid for. You can head to garage exit now.")
+            #might not want to make it send to exitGarage depending in function that will run this
+            self.exitGarage()
         else:
-            print(f"Your ticket is paid")
-            self.currentTicket.pop(int(answer))
-            #popped thing = False
-            self.spaces.append(0)
+            print("Thank you for paying. You can exit garage now.")
+            self.currentTicket[int(answer)] = True
+            self.spaces.append(int(answer))
             self.tickets -= 1
+            #might not want to make it send to exitGarage depending in function that will run this
+            self.exitGarage()
             
     def exitGarage(self):
-        response = input("What is your ticket number?")
+        response = input("Ready to exit? Enter your ticket number: ")
         if int(response) not in self.currentTicket.keys():
-        # if self.currentTicket. not in
-            print("Have a good day!")
-        elif self.currentTicket is True:
-            self.payTicket
-        
-# add a way to append to spaces to show another space is available after paying
-
-
-
-
-
-
-
-
-
-
-    # def leaveGarage(self):
-    #it will have to compare the ticket to see if it's paid(False)
-        
-
-# spaces = []
-# if spaces < 6:
-#     print("your ticket number is ")
+            print("Please enter a valid ticket number")
+        #we need to check if it's paid by checking if it's true
+        #if it's false then they have to pay ticket
+        elif self.currentTicket[int(response)] == False:
+            print("Please pay your ticket to exit. ")
+            self.payTicket()
+        #if it's true(paid) then they can leave 
+        else:
+            print("Have a nice day!")
+            self.currentTicket[int(response)] = False
 
 
 #test runs:
-garage = ParkingLot()
-print(garage.spaces)
-print(garage.tickets)
-print(garage.currentTicket)
-garage.takeTicket()
-print(garage.spaces)
-print(garage.tickets)
-print(garage.currentTicket)
-garage.takeTicket()
-garage.takeTicket()
-garage.takeTicket()
-garage.takeTicket()
-garage.takeTicket()
-garage.takeTicket()
-print(garage.currentTicket)
-garage.payTicket()
+# garage = ParkingLot()
+# print(garage.spaces)
+# print(garage.tickets)
+# print(garage.currentTicket)
+# garage.takeTicket()
+# print(garage.spaces)
+# print(garage.tickets)
+# print(garage.currentTicket)
+# garage.takeTicket()
+# garage.takeTicket()
+# garage.takeTicket()
+# garage.takeTicket()
+# garage.takeTicket()
+# garage.takeTicket()
+# print(garage.currentTicket)
+# garage.payTicket()
 
 
 
-# lke_parking = ParkingLot() 
+lke_parking = ParkingLot() 
 
-# garage = ParkingLot([1,2,3,4,5,6,7,8,9,10])
-# create a function to run the garage
+# created a function to run the garage
 
-# def showOptions():
-#     while True:
-#        action = input("What would you like to do? " "\n \t Take Ticket" "\n \t Pay Ticket" "\n \t Leave Garage" "\n \t Quit" "\n")
+def showOptions():
+    while True:
+        action = input("What would you like to do? " "\n \t Take Ticket" "\n \t Pay Ticket" "\n \t Exit Garage" "\n \t Quit" "\n")
         
-#         if action.lower() == 'quit':
-#             print("Thank you for visitng ")
-#             break
-#         elif action.lower() == 'take ticket':
+        if action.lower() == 'quit':
+            print("Thank you for visiting ")
+            break
+        elif action.lower() == 'take ticket':
+            lke_parking.takeTicket()
 
-#             lke_parking.takeTicket()
+        elif action.lower() == 'pay ticket':
+            lke_parking.payTicket()
 
-#         elif lke_parking.lower() == 'pay ticket':
-#             lke_parking.payTicket()
+        elif action.lower() == 'exit garage':
+            lke_parking.exitGarage()
+
+showOptions()
