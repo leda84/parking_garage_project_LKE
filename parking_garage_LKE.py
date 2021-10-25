@@ -36,42 +36,53 @@ class ParkingLot():
             self.currentTicket[self.spaces[0]] = False #starts at False becasue it's unpaid
             self.spaces.pop(0)
             self.tickets += 1
+
             
 
     def payTicket(self):
 #This method is going to check if there's a valid ticket number and also 
-        answer = input("Enter ticket number you would like to pay: ")
-        if int(answer) not in self.currentTicket.keys():
-            print("Please enter a valid ticket number")
-            self.payTicket()
+        while True:
+            answer = input("Enter ticket number you would like to pay: (Enter 'quit') ")
+            if answer.lower() == 'quit':
+                break
+            if int(answer) not in self.currentTicket.keys():
+                print("Please enter a valid ticket number")
+                self.payTicket()
+                break
         # this is going to be to check if the ticket is already paid, so that payment is not needed
         #if int(answer) in self.currentTicket and True:
             #print("This ticket has been paid. You can exit now.")
-        elif self.currentTicket[int(answer)] == True:
-            print("This ticket has already been paid for. You can head to garage exit now.")
+            elif self.currentTicket[int(answer)] == True:
+                print("This ticket has already been paid for. Your 15 minutes to exit are running out.")
+                break
             #might not want to make it send to exitGarage depending in function that will run this
-            self.exitGarage()
-        else:
-            print("Thank you for paying. You can exit garage now.")
-            self.currentTicket[int(answer)] = True
-            self.spaces.append(int(answer))
-            self.tickets -= 1
+                # self.exitGarage()
+            else:
+                print("Thank you for paying. You have 15 minutes to exit garage.")
+                self.currentTicket[int(answer)] = True
+                self.spaces.append(int(answer))
+                self.tickets -= 1
+                break
             #might not want to make it send to exitGarage depending in function that will run this
-            self.exitGarage()
+                #self.exitGarage()
             
     def exitGarage(self):
-        response = input("Ready to exit? Enter your ticket number: ")
-        if int(response) not in self.currentTicket.keys():
-            print("Please enter a valid ticket number")
+        while True:
+            response = input("Ready to exit? Enter your ticket number: (Enter 'quit')")
+            if response.lower() == 'quit':
+                break
+            if int(response) not in self.currentTicket.keys():
+                print("Please enter a valid ticket number")
         #we need to check if it's paid by checking if it's true
         #if it's false then they have to pay ticket
-        elif self.currentTicket[int(response)] == False:
-            print("Please pay your ticket to exit. ")
-            self.payTicket()
+            elif self.currentTicket[int(response)] == False:
+                print("Please pay your ticket to exit. ")
+                self.payTicket()
         #if it's true(paid) then they can leave 
-        else:
-            print("Have a nice day!")
-            self.currentTicket[int(response)] = False
+            else:
+                print("Have a nice day!")
+                self.currentTicket.pop(int(response))
+                break
 
 
 #test runs:
