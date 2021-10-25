@@ -1,23 +1,10 @@
-#Your parking gargage class should have the following methods:
-# takeTicket
-#- This should increase the number of tickets sold by 1
-#- This should decrease the amount of parkingSpaces available by 1
-#- Add the ticket to the currentTicket dictionary with False(for unpaid)
-
-#payForParking
-#- Display an input that waits for an amount from the user and store it in a variable
-#- Display a message to the user that their ticket has been paid and they have 15mins to leave
-#- This should update the "currentTicket" dictionary key "paid" to True
-
-#leaveGarage
-#- If the ticket has not been paid, display an input prompt for payment
-#- If the ticket has been paid, display a message of "Thank You, have a nice day"
-#- Update parkingSpaces list to increase availability by 1 
-
-#You will need a few attributes as well:
-#- tickets (sold) -> integer(counter of sorts)
-#- parkingSpaces -> list
-#- currentTicket (is ticket paid?) -> dictionary
+# Group project for Week 2 Object Oriented Programming 
+# Group members Laura, Kuda, Elias 
+# Initial driver(Laura) 
+# Laura contributed to a lot of the initial building 
+# while the other members debugged We would all take turns driving 
+# Through much googling and looking up different examples 
+# we all contributed to the code and gave various inputs
 
 class ParkingLot():
 
@@ -30,7 +17,7 @@ class ParkingLot():
     def takeTicket(self):
 # This method will pop from spaces add to current ticket and print ticket number
         if self.tickets >= 6:
-            print("Garage is full")
+            print("Garage is full.")
         else:
             print(f"Your ticket number is {self.spaces[0]}")
             self.currentTicket[self.spaces[0]] = False #starts at False becasue it's unpaid
@@ -46,25 +33,21 @@ class ParkingLot():
             if answer.lower() == 'quit':
                 break
             if int(answer) not in self.currentTicket.keys():
-                print("Please enter a valid ticket number")
+                print("Please enter a valid ticket number.")
                 self.payTicket()
                 break
         # this is going to be to check if the ticket is already paid, so that payment is not needed
-        #if int(answer) in self.currentTicket and True:
-            #print("This ticket has been paid. You can exit now.")
+        # if int(answer) in self.currentTicket and True:
+        # print("This ticket has been paid. You can exit now.")
             elif self.currentTicket[int(answer)] == True:
                 print("This ticket has already been paid for. Your 15 minutes to exit are running out.")
                 break
-            #might not want to make it send to exitGarage depending in function that will run this
-                # self.exitGarage()
             else:
                 print("Thank you for paying. You have 15 minutes to exit garage.")
                 self.currentTicket[int(answer)] = True
                 self.spaces.append(int(answer))
                 self.tickets -= 1
                 break
-            #might not want to make it send to exitGarage depending in function that will run this
-                #self.exitGarage()
             
     def exitGarage(self):
         while True:
@@ -72,7 +55,7 @@ class ParkingLot():
             if response.lower() == 'quit':
                 break
             if int(response) not in self.currentTicket.keys():
-                print("Please enter a valid ticket number")
+                print("Please enter a valid ticket number. ")
         #we need to check if it's paid by checking if it's true
         #if it's false then they have to pay ticket
             elif self.currentTicket[int(response)] == False:
@@ -80,7 +63,7 @@ class ParkingLot():
                 self.payTicket()
         #if it's true(paid) then they can leave 
             else:
-                print("Have a nice day!")
+                print("Thank you, have a nice day!")
                 self.currentTicket.pop(int(response))
                 break
 
